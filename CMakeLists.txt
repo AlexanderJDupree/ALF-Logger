@@ -8,6 +8,9 @@ if(NOT CMAKE_BUILD_TYPE)
         FORCE)
 endif()
 
+# User options
+option(ENABLE_TESTS "Enable Tests" ON)
+
 set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
 
 include_directories(ALF 
@@ -16,3 +19,7 @@ include_directories(ALF
 )
 
 add_subdirectory(libalf)
+if(${ENABLE_TESTS})
+    enable_testing()
+    add_subdirectory(tests)
+endif()
